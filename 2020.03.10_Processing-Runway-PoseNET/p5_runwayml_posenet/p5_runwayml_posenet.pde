@@ -1,5 +1,5 @@
 /*
-  A quick example to manually connect Processing to RunwayML and receive a prediction 
+  A quick example to manually connect Processing to RunwayML and receive a PoseNET prediction 
   using an HTTP request. 
   
   Instructions:
@@ -119,7 +119,7 @@ void keyPressed()
   post.addJSONString(req.toString());  // this method is custom added to Rune/Dan's library
   post.send();
   
-  // Wait for the response.
+  // Wait for the response
   String res = post.getContent();
   println("Response Content: " + res);
   println("Response Content-Length Header: " + post.getHeader("Content-Length"));
