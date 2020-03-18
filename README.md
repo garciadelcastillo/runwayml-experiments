@@ -1,2 +1,2 @@
-# runwayml-projects
-Just a collection of small projects using RunwayML
+# runwayml-experiments
+Just a collection of small experiments using RunwayML
