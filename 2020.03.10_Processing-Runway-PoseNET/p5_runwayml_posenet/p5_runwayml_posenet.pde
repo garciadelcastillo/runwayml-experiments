@@ -48,7 +48,7 @@ void setup() {
     
     // The camera can be initialized directly using an 
     // element from the array returned by list():
-    cam = new Capture(this, cameras[3]);
+    cam = new Capture(this, cameras[cameraID]);
     cam.start();     
   }      
 }
@@ -58,6 +58,7 @@ void draw() {
   if (cam.available() == true) {
     cam.read();
   }
+  
   
   // Render the last snap or the live webcam feed
   if (snapImg != null) {
@@ -82,14 +83,14 @@ void draw() {
 void keyPressed() 
 {
   // Base filename
-  String filename = "screenshot_" + frameCount + ".png";
+  String filename = "screenshot_" + frameCount;
   
   // Save snapshot to sketch folder
   snapImg = cam.copy();
-  snapImg.save(filename);
+  snapImg.save(filename + ".png");
   
   // Load bytes from file
-  byte[] imgBytes = loadBytes(filename);
+  byte[] imgBytes = loadBytes(filename + ".png");
 
   // Encode them to base64. 
   // https://forum.processing.org/two/discussion/22523/pimage-to-base64-for-api-upload
@@ -113,6 +114,9 @@ void keyPressed()
   req.setInt("maxPoseDetections", 5);
   req.setDouble("scoreThreshold", 0.25);
   
+  // Save the request json to the system
+  saveStrings(filename + "_request.json", new String[]{ req.toString() });
+  
   // Compose and send the HTTP POST request to Runway
   PostRequest post = new PostRequest("http://localhost:8000/query");
   post.addHeader("Content-Type", "application/json");
@@ -123,6 +127,9 @@ void keyPressed()
   String res = post.getContent();
   println("Response Content: " + res);
   println("Response Content-Length Header: " + post.getHeader("Content-Length"));
+  
+  // Save the response json to the system
+  saveStrings(filename + "_response.json", new String[]{ res.toString() });
 
   // Parse the response into a custom Pose object
   skeleton = new Pose(res);
@@ -130,5 +137,5 @@ void keyPressed()
   // Save a composite image to sketch folder
   image(snapImg, 0, 0);
   skeleton.render();
-  saveFrame(filename + ".skeleton.png");
+  saveFrame(filename + "_skeleton.png");
 }
