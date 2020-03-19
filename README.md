@@ -7,6 +7,6 @@ This work is licensed under a Creative Commons Attribution 4.0 International Lic
 
 [github.com/garciadelcastillo](https://github.com/garciadelcastillo)
 
-[twitter.com/garciadelcast](https://twitter.com/garciadelcast)
-
 [instagram.com/garciadelcastillo](https://www.instagram.com/garciadelcastillo/)
+
+[twitter.com/garciadelcast](https://twitter.com/garciadelcast)
