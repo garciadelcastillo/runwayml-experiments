@@ -4,7 +4,7 @@ Just a collection of small experiments using RunwayML
 ![](./gh_runway_posenet.gif)
 
 ### Requirements
-Download and install RunwayML locally: https://runwayml.com/ (tested with Beta v.0.17.5)
+Download and install RunwayML locally: https://runwayml.com/download (tested with Beta v.0.17.5)
 
 For the Grasshopper samples:
 - Rhino 7 or above. 
